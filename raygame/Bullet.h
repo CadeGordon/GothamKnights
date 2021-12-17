@@ -1,16 +1,18 @@
 #pragma once
 #include "Actor.h"
+
 class InputComponent;
 class MoveComponent;
 class SpriteComponent;
 class ShootComponent;
 class ShootComponentInput;
 
-class Player :
+
+class Bullet :
 	public Actor
 {
 public:
-	Player(float x, float y, const char* name) : Actor(x, y, name) {}
+	Bullet(float x, float y, const char* name) : Actor(x, y, name) {}
 
 	void start() override;
 	void update(float deltaTime) override;
