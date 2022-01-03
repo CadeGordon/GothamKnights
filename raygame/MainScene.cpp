@@ -3,6 +3,8 @@
 #include "MoveComponent.h"
 #include "Transform2D.h"
 #include "Player.h"
+#include "HealthComponent.h"
+
 
 void MainScene::start()
 {
@@ -10,4 +12,6 @@ void MainScene::start()
 
 	player->getTransform()->setScale({ 50,50 });
 	addActor(player);
+
+	
 }

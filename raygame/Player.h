@@ -3,6 +3,7 @@
 class InputComponent;
 class MoveComponent;
 class SpriteComponent;
+class HealthComponent;
 
 class Player :
 	public Actor
@@ -17,5 +18,6 @@ private:
 	InputComponent* m_inputComponent;
 	MoveComponent* m_moveComponent;
 	SpriteComponent* m_spriteComponent;
+	HealthComponent* m_healthComponent;
 };
 

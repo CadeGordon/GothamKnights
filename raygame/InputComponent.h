@@ -10,7 +10,7 @@ public:
 	InputComponent(const char* name = "InputComponent") : Component::Component(name) {}
 
 	MathLibrary::Vector2 getMoveAxis();
-
+	float removeHealth();
 
 private:
 	RAYLIB_H::KeyboardKey m_action1Key = RAYLIB_H::KeyboardKey::KEY_SPACE;
