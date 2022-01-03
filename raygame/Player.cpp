@@ -29,8 +29,7 @@ void Player::update(float deltaTime)
 
 	MathLibrary::Vector2 moveDirection = m_inputComponent->getMoveAxis();
 
-	if (m_moveComponent->getVelocity().getMagnitude() > 0)
-		getTransform()->setForward(m_moveComponent->getVelocity());
+	
 
 	m_moveComponent->setVelocity(moveDirection * 500);
 	
