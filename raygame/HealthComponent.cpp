@@ -3,7 +3,7 @@
 void HealthComponent::update()
 {
 
-	if (gethealth() < 0)
+	if (gethealth() <= 0)
 	{
 		sethealth(0);
 	}

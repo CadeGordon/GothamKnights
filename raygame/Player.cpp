@@ -19,6 +19,7 @@ void Player::start()
 	//Set spawn point 
 	//Set move speed
 	//Set position clamps
+	//Set health
 }
 
 void Player::update(float deltaTime)
