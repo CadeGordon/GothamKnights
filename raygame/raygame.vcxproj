@@ -149,7 +149,7 @@
     <ClCompile Include="AABBCollider.cpp" />
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="ActorArray.cpp" />
-    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="BulletComponent.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Component.cpp" />
@@ -160,8 +160,6 @@
     <ClCompile Include="MoveComponent.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="ShootComponent.cpp" />
-    <ClCompile Include="ShootComponentInput.cpp" />
     <ClCompile Include="SpriteComponenet.cpp" />
     <ClCompile Include="Transform2D.cpp" />
   </ItemGroup>
@@ -169,7 +167,7 @@
     <ClInclude Include="AABBCollider.h" />
     <ClInclude Include="Actor.h" />
     <ClInclude Include="ActorArray.h" />
-    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletComponent.h" />
     <ClInclude Include="CircleCollider.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Component.h" />
@@ -179,8 +177,6 @@
     <ClInclude Include="MoveComponent.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Scene.h" />
-    <ClInclude Include="ShootComponent.h" />
-    <ClInclude Include="ShootComponentInput.h" />
     <ClInclude Include="SpriteComponenet.h" />
     <ClInclude Include="Transform2D.h" />
   </ItemGroup>

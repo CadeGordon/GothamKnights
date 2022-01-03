@@ -2,9 +2,8 @@
 #include "InputComponent.h"
 #include "MoveComponent.h"
 #include "SpriteComponenet.h"
-#include "ShootComponent.h"
 #include "Bullet.h"
-#include "ShootComponentInput.h"
+
 
 void Player::start()
 {
