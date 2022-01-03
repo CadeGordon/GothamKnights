@@ -20,11 +20,11 @@ void Enemies::start()
 	//Set health
 }
 
-void Enemies::update(float deltaTime)
+void Enemies::update(float deltaTime) 
 {
 	Actor::update(deltaTime);
 
-	MathLibrary::Vector2 moveDirection = (m_target->getTransform()->getLocalPosition() - getTransform()->getLocalPosition()).normalize;
+	MathLibrary::Vector2 moveDirection = (m_target->getTransform()->getLocalPosition() - getTransform()->getLocalPosition()) * deltaTime;
 
 	m_moveComponent->setVelocity(moveDirection * 500);
 
