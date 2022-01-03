@@ -1,10 +1,12 @@
 #pragma once
 #include "Actor.h"
+#include "InputComponent.h"
+#include "MoveComponent.h"
+#include "SpriteComponenet.h"
 
 class InputComponent;
 class MoveComponent;
 class SpriteComponent;
-
 
 
 class Bullet :
@@ -20,8 +22,5 @@ private:
 	InputComponent* m_inputComponent;
 	MoveComponent* m_moveComponent;
 	SpriteComponent* m_spriteComponent;
-	
 };
-
-
 
