@@ -4,8 +4,7 @@
 class InputComponent;
 class MoveComponent;
 class SpriteComponent;
-class ShootComponent;
-class ShootComponentInput;
+
 
 
 class Bullet :
@@ -21,7 +20,8 @@ private:
 	InputComponent* m_inputComponent;
 	MoveComponent* m_moveComponent;
 	SpriteComponent* m_spriteComponent;
-	ShootComponent* m_shootComponent;
-	ShootComponentInput* m_shootComponentInput;
+	
 };
+
+
 
