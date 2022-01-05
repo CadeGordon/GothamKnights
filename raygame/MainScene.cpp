@@ -16,20 +16,19 @@ void MainScene::start()
 
 	player->getTransform()->setScale({ 50,50 });
 	addActor(player);
-	CircleCollider playerCollider = CircleCollider(20, player);
+	CircleCollider* playerCollider = new CircleCollider(20, player);
+	player->setCollider(playerCollider);
+	
 
-	*player->getCollider() = playerCollider;
 
 
-
-	//Mr.Freeze spawn info
+	//Mr.Freeze (enemy) spawn info
 
 	Enemies* enemy = new Enemies(600, 400, "Freeze", player);
 
 	enemy->getTransform()->setScale({ 100,100 });
 	addActor(enemy);
-	CircleCollider enemyCollider = CircleCollider(20, enemy);
-	*enemy->getCollider() = enemyCollider;
-	
+	CircleCollider* enemyCollider = new CircleCollider(20, enemy);
+	enemy->setCollider(enemyCollider);
 	
 }
