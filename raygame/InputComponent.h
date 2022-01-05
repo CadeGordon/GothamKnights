@@ -11,12 +11,14 @@ public:
 
 	MathLibrary::Vector2 getMoveAxis();
 	float removeHealth();
+	void showCollider();
 
 private:
 	RAYLIB_H::KeyboardKey m_action1Key = RAYLIB_H::KeyboardKey::KEY_SPACE;
 	RAYLIB_H::KeyboardKey m_action2Key = RAYLIB_H::KeyboardKey::KEY_P;
 	RAYLIB_H::KeyboardKey m_submitKey = RAYLIB_H::KeyboardKey::KEY_ENTER;
 	RAYLIB_H::KeyboardKey m_cancelKey = RAYLIB_H::KeyboardKey::KEY_BACKSPACE;
+	RAYLIB_H::KeyboardKey m_collisionKey = RAYLIB_H::KeyboardKey::KEY_LEFT_SHIFT;
 
 };
 

@@ -17,3 +17,11 @@ float InputComponent::removeHealth()
 
 	return subtractHealth + 4;
 }
+
+void InputComponent::showCollider()
+{
+	if (m_collisionKey)
+	{
+		
+	}
+}

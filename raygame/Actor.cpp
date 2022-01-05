@@ -3,6 +3,7 @@
 #include <string.h>
 #include "Collider.h"
 #include "Component.h"
+#include <iostream>
 
 
 Actor::Actor()
@@ -35,6 +36,8 @@ void Actor::onCollision(Actor* other)
 {
     for (int i = 0; i < m_componentCount; i++)
         m_comp[i]->onCollision(other);
+
+    std::cout << "collision detected" << std::endl;
 }
 
 Component* Actor::addComponent(Component* component)

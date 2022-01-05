@@ -3,6 +3,7 @@
 #include "SpriteComponenet.h"
 #include "HealthComponent.h"
 #include "InputComponent.h"
+#include <iostream>
 
 void Enemies::start()
 {
@@ -31,4 +32,10 @@ void Enemies::update(float deltaTime)
 
 	////Add the new velocity to the old position to get the new position
 	//MathLibrary::Vector2 newPosition = getOwner()->getTransform()->getLocalPosition() + getVelocity() * deltaTime;
+}
+
+void Enemies::onCollision(Actor* actor)
+{
+	
+	std::cout << "collision detected" << std::endl;
 }
