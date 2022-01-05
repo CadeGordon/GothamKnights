@@ -24,9 +24,9 @@ void Enemies::update(float deltaTime)
 {
 	Actor::update(deltaTime);
 
-	MathLibrary::Vector2 moveDirection = (m_target->getTransform()->getLocalPosition() - getTransform()->getLocalPosition()) * deltaTime;
+	MathLibrary::Vector2 moveDirection = (m_target->getTransform()->getLocalPosition() - getTransform()->getLocalPosition()) ;
 
-	m_moveComponent->setVelocity(moveDirection * 500);
+	m_moveComponent->setVelocity(moveDirection.getNormalized() * 200);
 
 
 	////Add the new velocity to the old position to get the new position
