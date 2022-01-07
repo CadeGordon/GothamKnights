@@ -3,6 +3,7 @@
 #include "MoveComponent.h"
 #include "Transform2D.h"
 #include "Player.h"
+#include "Bullet.h"
 #include "enemies.h"
 #include "HealthComponent.h"
 #include "CircleCollider.h"
@@ -13,9 +14,11 @@ void MainScene::start()
 	//Red Hood (player) spawn info
 
 	Player* player = new Player(50, 50, "Player");
+	
 
 	player->getTransform()->setScale({ 50,50 });
 	addActor(player);
+	
 	CircleCollider* playerCollider = new CircleCollider(20, player);
 	player->setCollider(playerCollider);
 	
