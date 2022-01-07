@@ -129,6 +129,5 @@ private:
     unsigned int m_componentCount;
     Component** m_comp;
     
-    
 };
 

@@ -7,6 +7,7 @@
 #include "enemies.h"
 #include "HealthComponent.h"
 #include "CircleCollider.h"
+#include "Accessory.h"
 
 
 void MainScene::start()
@@ -14,11 +15,16 @@ void MainScene::start()
 	//Red Hood (player) spawn info
 
 	Player* player = new Player(50, 50, "Player");
-	
 
 	player->getTransform()->setScale({ 50,50 });
 	addActor(player);
 	
+	Accessory* iceCream = new Accessory(20, 20, "iceCream");
+	iceCream->getTransform()->setScale({ 50, 50 });
+	addActor(iceCream);
+
+	player->getTransform()->addChild(iceCream->getTransform());
+
 	CircleCollider* playerCollider = new CircleCollider(20, player);
 	player->setCollider(playerCollider);
 	
