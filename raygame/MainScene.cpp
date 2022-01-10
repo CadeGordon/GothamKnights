@@ -28,8 +28,8 @@ void MainScene::start()
 	//Adds in the ice cream cone.
 	addActor(iceCream);
 
-	//sets the ice cream cone to be the child of the player.
-	player->getTransform()->addChild(iceCream->getTransform());
+	////sets the ice cream cone to be the child of the player.
+	//player->getTransform()->addChild(iceCream->getTransform());
 
 	//sets up a circle collider for the player.
 	CircleCollider* playerCollider = new CircleCollider(20, player);

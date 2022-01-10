@@ -16,7 +16,7 @@ Bullet::Bullet(Actor* owner, float speed, MathLibrary::Vector2 direction, float 
 
 void Bullet::start()
 {
-	m_spriteComponent = (dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/bullet.png"))));
+	m_spriteComponent = (dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/Shuriken.png"))));
 	m_moveComponent = (dynamic_cast<MoveComponent*>(addComponent(new MoveComponent())));
 	m_moveComponent->setMaxSpeed(m_bulletSpeed);
 

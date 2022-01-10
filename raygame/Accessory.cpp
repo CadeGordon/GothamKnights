@@ -15,8 +15,8 @@
  void Accessory::update(float deltaTime)
  {
 	 Actor::update(deltaTime);
-	 //the accessory will move according to the parent's position
-	 MathLibrary::Vector2 moveDirection = (getTransform()->getParent()->getLocalPosition());
-	 m_moveComponent->setVelocity(moveDirection);
+	 ////the accessory will move according to the parent's position
+	 //MathLibrary::Vector2 moveDirection = (getTransform()->getParent()->getLocalPosition());
+	 //m_moveComponent->setVelocity(moveDirection);
 
  }
