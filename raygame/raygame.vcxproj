@@ -151,8 +151,6 @@
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="ActorArray.cpp" />
     <ClCompile Include="Bullet.cpp" />
-    <ClCompile Include="BulletComponent.cpp" />
-    <ClCompile Include="BulletInputComponent.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Component.cpp" />
@@ -174,8 +172,6 @@
     <ClInclude Include="Actor.h" />
     <ClInclude Include="ActorArray.h" />
     <ClInclude Include="Bullet.h" />
-    <ClInclude Include="BulletComponent.h" />
-    <ClInclude Include="BulletInputComponent.h" />
     <ClInclude Include="CircleCollider.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Component.h" />
