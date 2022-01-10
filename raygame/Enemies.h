@@ -1,30 +1,23 @@
 #pragma once
 #include "Actor.h"
-class InputComponent;
 class MoveComponent;
 class SpriteComponent;
 class HealthComponent;
-class ShootComponentInput;
-class ShootComponent;
 
-
-
-class Player :
+class Enemies :
 	public Actor
 {
 public:
-	Player(float x, float y, const char* name) : Actor(x, y, name) {}
+	Enemies(float x, float y, const char* name, Actor* target) : Actor(x, y, name) { m_target = target; }
 
 	void start() override;
 	void update(float deltaTime) override;
+	void onCollision(Actor* actor) override;
 
 private:
-	InputComponent* m_inputComponent;
+	Actor* m_target;
 	MoveComponent* m_moveComponent;
 	SpriteComponent* m_spriteComponent;
 	HealthComponent* m_healthComponent;
-	ShootComponent* m_shootComponent;
-	ShootComponentInput* m_shootComponentInput;
-	
 };
 

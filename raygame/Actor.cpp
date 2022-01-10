@@ -3,6 +3,7 @@
 #include <string.h>
 #include "Collider.h"
 #include "Component.h"
+#include <iostream>
 
 
 Actor::Actor()
