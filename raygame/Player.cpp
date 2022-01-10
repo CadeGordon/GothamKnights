@@ -42,7 +42,7 @@ void Player::update(float deltaTime)
 	{
 		Scene* currentScene = Engine::getCurrentScene();
 		Bullet* bullet = new Bullet(this, 500, getTransform()->getForward(), getTransform()->getLocalPosition().x, getTransform()->getLocalPosition().y);
-		bullet->getTransform()->setScale({ 50, 50 });
+		bullet->getTransform()->setScale({ 25, 25 });
 		currentScene->addActor(bullet);
 	}
 

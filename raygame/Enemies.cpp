@@ -35,30 +35,6 @@ void Enemies::update(float deltaTime)
 
 void Enemies::onCollision(Actor* actor)
 {
-	
-	int spawn = GetRandomValue(0,4);
-	if (spawn == 0)
-	{
-		
-	}
-	if (spawn == 1)
-	{
-		
-	}
-	if (spawn == 2)
-	{
-		
-	}
-	if (spawn == 3)
-	{
-	
-	}
-	if (spawn == 4)
-	{
-		
-	}
-
-
 	//when the enemy collides with the player apply "collision detected" to the command box
 	std::cout << "collision detected" << std::endl;
 }

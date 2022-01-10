@@ -7,8 +7,4 @@ void HealthComponent::update()
 	{
 		sethealth(0);
 	}
-	else
-	{
-		m_health - 5;
-	}
 }

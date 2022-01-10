@@ -51,5 +51,6 @@ void MainScene::start()
 	CircleCollider* enemyCollider = new CircleCollider(20, enemy);
 	//adds in the collider
 	enemy->setCollider(enemyCollider);
+
 	
 }

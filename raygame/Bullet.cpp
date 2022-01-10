@@ -25,7 +25,7 @@ void Bullet::start()
 
 void Bullet::update(float deltaTime)
 {
-	m_moveComponent->setVelocity(m_bulletDirection.getNormalized() * m_bulletSpeed);
+	m_moveComponent->setVelocity(m_bulletDirection.getNormalized() * m_bulletSpeed * 2);
 
 
 	Actor::update(deltaTime);
@@ -33,6 +33,6 @@ void Bullet::update(float deltaTime)
 
 void Bullet::draw()
 {
-	Actor::draw();
-	getCollider()->draw();
+	Actor::draw();/*
+	getCollider()->draw();*/
 }
