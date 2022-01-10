@@ -1,26 +1,27 @@
 #include "Bullet.h"
+#include "MoveComponent.h";
+#include "SpriteComponenet.h";
+
+Bullet::Bullet(Actor* owner, float speed, MathLibrary::Vector2 direction, float x, float y, const char* name) : Actor::Actor(x, y, name)
+{
+	m_owner = owner;
+	m_bulletSpeed = speed;
+	m_bulletDirection = direction;
+}
 
 void Bullet::start()
 {
+	m_spriteComponent = (dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/bullet.png"))));
+	m_moveComponent = (dynamic_cast<MoveComponent*>(addComponent(new MoveComponent())));
+	m_moveComponent->setMaxSpeed(m_bulletSpeed);
+
 	Actor::start();
-
-
-	m_inputComponent = dynamic_cast<InputComponent*>(addComponent(new InputComponent()));
-	m_moveComponent = dynamic_cast<MoveComponent*> (addComponent(new MoveComponent()));
-
-	m_moveComponent->setMaxSpeed(10);
-
-	m_spriteComponent = dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("Images/bullet.png")));
-
 }
 
 void Bullet::update(float deltaTime)
 {
+	m_moveComponent->setVelocity(m_bulletDirection.getNormalized() * m_bulletSpeed);
+
+
 	Actor::update(deltaTime);
-
-	MathLibrary::Vector2 moveDirection = m_inputComponent->getMoveAxis();
-
-
-
-	m_moveComponent->setVelocity(moveDirection * 500);
 }
