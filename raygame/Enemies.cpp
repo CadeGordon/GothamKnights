@@ -24,9 +24,8 @@ void Enemies::start()
 void Enemies::update(float deltaTime) 
 {
 	Actor::update(deltaTime);
-
+	//according to the target's position, the enemy will move towards that position according to the enemy's position
 	MathLibrary::Vector2 moveDirection = (m_target->getTransform()->getLocalPosition() - getTransform()->getLocalPosition()) ;
-
 	m_moveComponent->setVelocity(moveDirection.getNormalized() * 200);
 
 
@@ -36,6 +35,6 @@ void Enemies::update(float deltaTime)
 
 void Enemies::onCollision(Actor* actor)
 {
-	
+	//when the enemy collides with the player apply "collision detected" to the command box
 	std::cout << "collision detected" << std::endl;
 }
