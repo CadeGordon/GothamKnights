@@ -1,27 +1,24 @@
 #pragma once
 #include "Actor.h"
-
-class InputComponent;
+#include <Vector2.h>
 class MoveComponent;
 class SpriteComponent;
-class ShootComponent;
-class ShootComponentInput;
-
 
 class Bullet :
 	public Actor
 {
 public:
-	Bullet(float x, float y, const char* name) : Actor(x, y, name) {}
+	Bullet(Actor* owner, float speed, MathLibrary::Vector2 direction, float x, float y, const char* name = "Bullet");
 
 	void start() override;
+
 	void update(float deltaTime) override;
 
 private:
-	InputComponent* m_inputComponent;
+	Actor* m_owner;
+	float m_bulletSpeed;
+	MathLibrary::Vector2 m_bulletDirection;
 	MoveComponent* m_moveComponent;
 	SpriteComponent* m_spriteComponent;
-	ShootComponent* m_shootComponent;
-	ShootComponentInput* m_shootComponentInput;
 };
 

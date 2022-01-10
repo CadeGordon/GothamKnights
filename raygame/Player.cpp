@@ -3,6 +3,7 @@
 #include "MoveComponent.h"
 #include "SpriteComponenet.h"
 #include "Bullet.h"
+#include "Engine.h"
 
 
 void Player::start()
@@ -31,6 +32,16 @@ void Player::update(float deltaTime)
 
 	if (m_moveComponent->getVelocity().getMagnitude() > 0)
 		getTransform()->setForward(m_moveComponent->getVelocity());
+
+	if (m_inputComponent->getSpacePress())
+	{
+		Scene* currentScene = Engine::getCurrentScene();
+		Bullet* bullet = new Bullet(this, 500, getTransform()->getForward(), getTransform()->getLocalPosition().x, getTransform()->getLocalPosition().y);
+		bullet->getTransform()->setScale({ 50, 50 });
+		currentScene->addActor(bullet);
+	}
+
+	
 
 	m_moveComponent->setVelocity(moveDirection * 500);
 	

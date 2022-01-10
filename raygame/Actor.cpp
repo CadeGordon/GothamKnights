@@ -13,6 +13,9 @@ Actor::Actor()
 
 Actor::~Actor()
 {
+    for (int i = 0; i < m_componentCount; i++)
+        delete m_comp[i];
+
     delete m_transform;
 }
 
