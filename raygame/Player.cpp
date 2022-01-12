@@ -53,3 +53,13 @@ void Player::update(float deltaTime)
 	
 }
 
+void Player::onCollision(Actor* other)
+{
+	if (other->getName() == "Freeze")
+	{
+		//Destroy the enemy and take 10 health away
+		Engine::destroy(other);
+		
+	}
+}
+

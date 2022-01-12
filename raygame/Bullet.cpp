@@ -45,10 +45,10 @@ void Bullet::onCollision(Actor* other)
 	if (other->getName() == "Freeze")
 	{
 		//Destroy the bullet
-		Engine::destroy(this);
+		Engine::destroy(other);
 	}
 	//If the actors name is the players bullet
-	if (other->getName() == "PlayerBullet")
+	if (other->getName() == "Bullet")
 	{
 		//destroy both bullets
 		Engine::destroy(this);

@@ -4,6 +4,7 @@
 #include "HealthComponent.h"
 #include "InputComponent.h"
 #include <iostream>
+#include "Engine.h"
 
 void Enemies::start()
 {
@@ -33,8 +34,13 @@ void Enemies::update(float deltaTime)
 	//MathLibrary::Vector2 newPosition = getOwner()->getTransform()->getLocalPosition() + getVelocity() * deltaTime;
 }
 
-void Enemies::onCollision(Actor* actor)
+void Enemies::onCollision(Actor* other)
 {
 	//when the enemy collides with the player apply "collision detected" to the command box
-	std::cout << "collision detected" << std::endl;
+	
+	if (other->getName() == "Bullet")
+	{
+		Engine::destroy(other);
+	}
+	
 }

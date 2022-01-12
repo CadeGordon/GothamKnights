@@ -12,7 +12,7 @@ public:
 
 	void start() override;
 	void update(float deltaTime) override;
-	void onCollision(Actor* actor) override;
+	void onCollision(Actor* other) override;
 
 private:
 	Actor* m_target;
