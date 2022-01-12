@@ -147,7 +147,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AABBCollider.cpp" />
-    <ClCompile Include="Accessory.cpp" />
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="ActorArray.cpp" />
     <ClCompile Include="Bullet.cpp" />
@@ -168,7 +167,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AABBCollider.h" />
-    <ClInclude Include="Accessory.h" />
     <ClInclude Include="Actor.h" />
     <ClInclude Include="ActorArray.h" />
     <ClInclude Include="Bullet.h" />
