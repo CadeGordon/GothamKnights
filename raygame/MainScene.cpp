@@ -30,6 +30,12 @@ void MainScene::start()
 	CircleCollider* playerCollider = new CircleCollider(20, player);
 	//adds in the collider
 	player->setCollider(playerCollider);
+
+	Actor* child = new Actor(0, 0, "child");
+	player->getTransform()->addChild(child->getTransform());
+	child->getTransform()->setScale({ 50, 50 });
+	CircleCollider* childCollider = new CircleCollider(30, child);
+	child->setCollider(childCollider);
 	
 
 
@@ -46,6 +52,9 @@ void MainScene::start()
 	CircleCollider* enemyCollider = new CircleCollider(20, enemy);
 	//adds in the collider
 	enemy->setCollider(enemyCollider);
+
+	
+
 
 	
 }

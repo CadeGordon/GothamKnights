@@ -2,6 +2,7 @@
 #include "MoveComponent.h";
 #include "SpriteComponenet.h";
 #include "CircleCollider.h"
+#include "Engine.h"
 
 Bullet::Bullet(Actor* owner, float speed, MathLibrary::Vector2 direction, float x, float y, const char* name) : Actor::Actor(x, y, name)
 {
@@ -36,4 +37,21 @@ void Bullet::draw()
 {
 	Actor::draw();
 	getCollider()->draw();
+}
+
+void Bullet::onCollision(Actor* other)
+{
+	
+	if (other->getName() == "Freeze")
+	{
+		//Destroy the bullet
+		Engine::destroy(this);
+	}
+	//If the actors name is the players bullet
+	if (other->getName() == "PlayerBullet")
+	{
+		//destroy both bullets
+		Engine::destroy(this);
+		Engine::destroy(other);
+	}
 }
