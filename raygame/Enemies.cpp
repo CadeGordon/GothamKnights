@@ -36,7 +36,7 @@ void Enemies::update(float deltaTime)
 
 void Enemies::onCollision(Actor* other)
 {
-	//when the enemy collides with the player apply "collision detected" to the command box
+	//when the enemy collides with bullet the enemy is removed 
 	
 	if (other->getName() == "Bullet")
 	{

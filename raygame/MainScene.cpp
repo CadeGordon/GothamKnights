@@ -31,6 +31,7 @@ void MainScene::start()
 	//adds in the collider
 	player->setCollider(playerCollider);
 
+	//started child but was not able to finish
 	Actor* child = new Actor(0, 0, "child");
 	player->getTransform()->addChild(child->getTransform());
 	child->getTransform()->setScale({ 50, 50 });

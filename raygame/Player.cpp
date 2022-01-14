@@ -38,6 +38,7 @@ void Player::update(float deltaTime)
 	if (m_moveComponent->getVelocity().getMagnitude() > 0)
 		getTransform()->setForward(m_moveComponent->getVelocity());
 
+	//When space is pressed is shoots a bullet
 	if (m_inputComponent->getSpacePress())
 	{
 		Scene* currentScene = Engine::getCurrentScene();
@@ -53,6 +54,7 @@ void Player::update(float deltaTime)
 	
 }
 
+//When the player collides with Freeze he is removed from the scene
 void Player::onCollision(Actor* other)
 {
 	if (other->getName() == "Freeze")

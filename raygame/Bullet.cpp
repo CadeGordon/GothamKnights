@@ -33,6 +33,7 @@ void Bullet::update(float deltaTime)
 	Actor::update(deltaTime);
 }
 
+//Draws bullet to the screen
 void Bullet::draw()
 {
 	Actor::draw();
@@ -41,17 +42,11 @@ void Bullet::draw()
 
 void Bullet::onCollision(Actor* other)
 {
-	
+	//if the bullets collides with freeze...
 	if (other->getName() == "Freeze")
 	{
-		//Destroy the bullet
+		//...Destroy the bullet
 		Engine::destroy(other);
 	}
-	//If the actors name is the players bullet
-	if (other->getName() == "Bullet")
-	{
-		//destroy both bullets
-		Engine::destroy(this);
-		Engine::destroy(other);
-	}
+	
 }
