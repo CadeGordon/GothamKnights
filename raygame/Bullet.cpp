@@ -1,8 +1,8 @@
-
 #include "Bullet.h"
 #include "MoveComponent.h";
 #include "SpriteComponenet.h";
 #include "CircleCollider.h"
+#include "Engine.h"
 
 Bullet::Bullet(Actor* owner, float speed, MathLibrary::Vector2 direction, float x, float y, const char* name) : Actor::Actor(x, y, name)
 {
@@ -16,12 +16,14 @@ Bullet::Bullet(Actor* owner, float speed, MathLibrary::Vector2 direction, float 
 
 void Bullet::start()
 {
-	m_spriteComponent = (dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/bullet.png"))));
+	m_spriteComponent = (dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/Shuriken.png"))));
 	m_moveComponent = (dynamic_cast<MoveComponent*>(addComponent(new MoveComponent())));
 	m_moveComponent->setMaxSpeed(m_bulletSpeed);
 
 	Actor::start();
 }
+
+
 
 void Bullet::update(float deltaTime)
 {
@@ -35,4 +37,21 @@ void Bullet::draw()
 {
 	Actor::draw();
 	getCollider()->draw();
+}
+
+void Bullet::onCollision(Actor* other)
+{
+	
+	if (other->getName() == "Freeze")
+	{
+		//Destroy the bullet
+		Engine::destroy(other);
+	}
+	//If the actors name is the players bullet
+	if (other->getName() == "Bullet")
+	{
+		//destroy both bullets
+		Engine::destroy(this);
+		Engine::destroy(other);
+	}
 }
