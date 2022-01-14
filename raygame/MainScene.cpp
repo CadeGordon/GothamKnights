@@ -7,6 +7,7 @@
 #include "enemies.h"
 #include "HealthComponent.h"
 #include "CircleCollider.h"
+#include "Accessory.h"
 
 
 
@@ -21,10 +22,15 @@ void MainScene::start()
 	//officially adds the actor into the game.
 	addActor(player);
 	
-	
+
+	Accessory* iceCream = new Accessory(50, 40, "iceCream");
+	iceCream->getTransform()->setScale({ 50,50 });
+	addActor(iceCream);
 
 	////sets the ice cream cone to be the child of the player.
 	//player->getTransform()->addChild(iceCream->getTransform());
+
+	
 
 	//sets up a circle collider for the player.
 	CircleCollider* playerCollider = new CircleCollider(20, player);
