@@ -5,6 +5,7 @@
 #include "InputComponent.h"
 #include <iostream>
 #include "Engine.h"
+#include "Transform2D.h"
 
 void Enemies::start()
 {
@@ -29,6 +30,12 @@ void Enemies::update(float deltaTime)
 	MathLibrary::Vector2 moveDirection = (m_target->getTransform()->getLocalPosition() - getTransform()->getLocalPosition()) ;
 	m_moveComponent->setVelocity(moveDirection.getNormalized() * 200);
 
+	for (int i = 0; i < getTransform()->getChildCount(); i++)
+	{
+		getTransform()->getChildren()[i]->rotate((PI * 1) * deltaTime);
+	}
+
+	
 
 	////Add the new velocity to the old position to get the new position
 	//MathLibrary::Vector2 newPosition = getOwner()->getTransform()->getLocalPosition() + getVelocity() * deltaTime;

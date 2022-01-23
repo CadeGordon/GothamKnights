@@ -21,7 +21,7 @@ void MainScene::start()
 	//Sets the x scale and y scale.
 	player->getTransform()->setScale({ 50,50 });
 	//officially adds the actor into the game.
-	addActor(player);
+	
 
 	//sets up a circle collider for the player.
 	CircleCollider* playerCollider = new CircleCollider(20, player);
@@ -40,7 +40,7 @@ void MainScene::start()
 	//sets the scale of the enemy
 	enemy->getTransform()->setScale({ 100,100 });
 	//Adds in the enemy
-	addActor(enemy);
+	
 	//sets up a circle collider for the enemy to use
 	CircleCollider* enemyCollider = new CircleCollider(20, enemy);
 	//adds in the collider
@@ -48,24 +48,28 @@ void MainScene::start()
 
 
 
-	////sets the ice cream cone to be the child of the player.
-	//player->getTransform()->addChild(iceCream->getTransform());
-	IceCream* iceCream = new IceCream(50, 50, "IceCream");
-	iceCream->getTransform()->setScale({ 50,50 });
-	addActor(iceCream);
+	////ice cream cone to child to Freeze
+	
+	
 
 
 	Actor* child = new Actor(0, 0, "child");
-	iceCream->getTransform()->addChild(child->getTransform());
+	enemy->getTransform()->addChild(child->getTransform());
 	child->getTransform()->setScale({ 50, 50 });
 	CircleCollider* childCollider = new CircleCollider(30, child);
 	child->setCollider(childCollider);
 
-	addActor(child);
-	
+	IceCream* iceCream = new IceCream(.02f, -.02f, "IceCream");
+	iceCream->getTransform()->setScale({ 50,50 });
+	enemy->getTransform()->addChild(iceCream->getTransform());
+	CircleCollider* iceCreamCollider = new CircleCollider(30, iceCream);
+	iceCream->setCollider(iceCreamCollider);
 
 	
+	
 
+	addActor(enemy);
+	addActor(player);
 
 	
 }
