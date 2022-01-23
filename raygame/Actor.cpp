@@ -3,17 +3,15 @@
 #include <string.h>
 #include "Collider.h"
 #include "Component.h"
-#include <iostream>
-
 
 Actor::Actor()
 {
     m_transform = new Transform2D(this);
-   
 }
 
 Actor::~Actor()
 {
+    ///Deletes all components
     for (int i = 0; i < m_componentCount; i++)
         delete m_comp[i];
 
@@ -29,21 +27,23 @@ Actor::Actor(float x, float y, const char* name = "Actor")
     m_name = name;
 }
 
-void Actor::start()
+Component* Actor::getComponent(const char* componentName)
 {
-    m_started = true;
-    
-}
-
-void Actor::onCollision(Actor* other)
-{
+    //Iterate through the component array
     for (int i = 0; i < m_componentCount; i++)
-        m_comp[i]->onCollision(other);
+    {
+        //Return the comoponent if the name is the same as the current component
+        if (strcmp(m_comp[i]->getName(), componentName) == 0)
+            return m_comp[i];
+    }
+
+    //Return nullptr if the component is not in the list
+    return nullptr;
 }
 
 Component* Actor::addComponent(Component* component)
 {
-    //Retunr null if this compoent has an owner already
+    //Return null if this component has an owner already
     Actor* owner = component->getOwner();
     if (owner)
         return nullptr;
@@ -51,24 +51,22 @@ Component* Actor::addComponent(Component* component)
     component->assignOwner(this);
 
     //Create a new array with a size one greater than our old array
-    Component** tempArray = new Component * [m_componentCount + 1];
-
+    Component** appendedArray = new Component * [m_componentCount + 1];
     //Copy the values from the old array to the new array
     for (int i = 0; i < m_componentCount; i++)
     {
-        tempArray[i] = m_comp[i];
-       
+        appendedArray[i] = m_comp[i];
     }
 
     //Set the last value in the new array to be the actor we want to add
-    tempArray[m_componentCount] = component;
+    appendedArray[m_componentCount] = component;
     if (m_componentCount > 1)
-        //set old array to hold the values of the new array
+        //Set old array to hold the values of the new array
         delete[] m_comp;
     else if (m_componentCount == 1)
         delete m_comp;
-    
-    m_comp = tempArray;
+
+    m_comp = appendedArray;
     m_componentCount++;
 
     return component;
@@ -76,15 +74,15 @@ Component* Actor::addComponent(Component* component)
 
 bool Actor::removeComponent(Component* component)
 {
-    if(!component)
-    return false;
+    if (!component)
+        return false;
 
     bool componentRemoved = false;
-
+    //Create a new array with a size one less than our old array
     Component** newArray = new Component * [m_componentCount - 1];
-
+    //Create variable to access tempArray index
     int j = 0;
-
+    //Copy values from the old array to the new array
     for (int i = 0; i < m_componentCount; i++)
     {
         if (component != m_comp[i])
@@ -97,18 +95,19 @@ bool Actor::removeComponent(Component* component)
             componentRemoved = true;
         }
     }
-       
 
     if (componentRemoved)
     {
-       //Set the old array to the new array
-       m_comp = newArray;
-       m_componentCount--;
-       delete component;
-
+        delete[] m_comp;
+        //Set the old array to the new array
+        m_comp = newArray;
+        m_componentCount--;
+        delete component;
     }
-    
-    //retunr whether or not the removal was successful
+    else
+        delete[] newArray;
+
+    //Return whether or not the removal was successful
     return componentRemoved;
 }
 
@@ -120,16 +119,20 @@ bool Actor::removeComponent(const char* name)
     bool componentRemoved = false;
     Component* componentToDelete = nullptr;
 
+    //Create a new array with a size one less than our old array
     Component** newArray = new Component * [m_componentCount - 1];
-
+    //Create variable to access tempArray index
     int j = 0;
-
+    //Copy values from the old array to the new array
     for (int i = 0; i < m_componentCount; i++)
     {
         if (strcmp(m_comp[i]->getName(), name) == 0)
         {
             newArray[j] = m_comp[i];
             j++;
+
+            if (m_componentCount == 1)
+                componentRemoved = true;
         }
         else
         {
@@ -138,41 +141,37 @@ bool Actor::removeComponent(const char* name)
         }
     }
 
-
     if (componentRemoved)
     {
+        delete[] m_comp;
         //Set the old array to the new array
         m_comp = newArray;
         m_componentCount--;
         delete componentToDelete;
-
     }
+    else
+        delete[] newArray;
 
-    delete[] newArray;
-
-    //retunr whether or not the removal was successful
+    //Return whether or not the removal was successful
     return componentRemoved;
 }
 
-Component* Actor::getComponent(const char* componentName)
+void Actor::start()
 {
-    //Iterate through the component array
-    for (int i = 0; i < m_componentCount; i++)
-    {
-        //Retunr the component if the name is the same as the current component
-        if (strcmp(m_comp[i]->getName(), componentName) == 0 )
-            return m_comp[i];
-    }
+    m_started = true;
+}
 
-    //Return nullptr if the compoent is not in the list
-    return nullptr;
+void Actor::onCollision(Actor* other)
+{
+    for (int i = 0; i < m_componentCount; i++)
+        m_comp[i]->onCollision(other);
 }
 
 void Actor::update(float deltaTime)
 {
     for (int i = 0; i < m_componentCount; i++)
     {
-        if (m_comp[i]->getStarted())
+        if (!m_comp[i]->getStarted())
             m_comp[i]->start();
 
         m_comp[i]->update(deltaTime);
@@ -198,9 +197,10 @@ void Actor::onDestroy()
     for (int i = 0; i < m_componentCount; i++)
         m_comp[i]->onDestroy();
 
-    //Removes this actor from its parent if it has one
+    Transform2D* parent = getTransform()->getParent();
+
     if (getTransform()->getParent())
-        getTransform()->getParent()->removeChild(getTransform());
+        parent->removeChild(getTransform());
 }
 
 bool Actor::checkForCollision(Actor* other)

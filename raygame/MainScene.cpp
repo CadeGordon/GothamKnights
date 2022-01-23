@@ -7,6 +7,8 @@
 #include "enemies.h"
 #include "HealthComponent.h"
 #include "CircleCollider.h"
+#include "IceCream.h"
+
 
 
 
@@ -20,23 +22,13 @@ void MainScene::start()
 	player->getTransform()->setScale({ 50,50 });
 	//officially adds the actor into the game.
 	addActor(player);
-	
-	
-
-	////sets the ice cream cone to be the child of the player.
-	//player->getTransform()->addChild(iceCream->getTransform());
 
 	//sets up a circle collider for the player.
 	CircleCollider* playerCollider = new CircleCollider(20, player);
 	//adds in the collider
 	player->setCollider(playerCollider);
 
-	//started child but was not able to finish
-	Actor* child = new Actor(0, 0, "child");
-	player->getTransform()->addChild(child->getTransform());
-	child->getTransform()->setScale({ 50, 50 });
-	CircleCollider* childCollider = new CircleCollider(30, child);
-	child->setCollider(childCollider);
+	
 	
 
 
@@ -53,6 +45,24 @@ void MainScene::start()
 	CircleCollider* enemyCollider = new CircleCollider(20, enemy);
 	//adds in the collider
 	enemy->setCollider(enemyCollider);
+
+
+
+	////sets the ice cream cone to be the child of the player.
+	//player->getTransform()->addChild(iceCream->getTransform());
+	IceCream* iceCream = new IceCream(50, 50, "IceCream");
+	iceCream->getTransform()->setScale({ 50,50 });
+	addActor(iceCream);
+
+
+	Actor* child = new Actor(0, 0, "child");
+	iceCream->getTransform()->addChild(child->getTransform());
+	child->getTransform()->setScale({ 50, 50 });
+	CircleCollider* childCollider = new CircleCollider(30, child);
+	child->setCollider(childCollider);
+
+	addActor(child);
+	
 
 	
 

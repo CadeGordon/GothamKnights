@@ -156,6 +156,7 @@
     <ClCompile Include="Enemies.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="HealthComponent.cpp" />
+    <ClCompile Include="IceCream.cpp" />
     <ClCompile Include="InputComponent.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainScene.cpp" />
@@ -176,6 +177,7 @@
     <ClInclude Include="Enemies.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="HealthComponent.h" />
+    <ClInclude Include="IceCream.h" />
     <ClInclude Include="InputComponent.h" />
     <ClInclude Include="MainScene.h" />
     <ClInclude Include="MoveComponent.h" />

@@ -116,11 +116,14 @@ public:
     /// <returns>the name of the component instance</returns>
     Component* getComponent(const char* componentName);
 
+    bool GetIsAlive() { return m_isAlive; }
+
 
     
 
 protected:
     const char* m_name;
+
 
 private:
     bool m_started;
@@ -128,6 +131,7 @@ private:
     Collider* m_collider;
     unsigned int m_componentCount;
     Component** m_comp;
+    bool m_isAlive;
     
 };
 
