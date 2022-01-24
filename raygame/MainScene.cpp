@@ -70,6 +70,6 @@ void MainScene::start()
 
 	addActor(enemy);
 	addActor(player);
-
+	
 	
 }
